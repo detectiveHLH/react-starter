@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from 'jquery';
 
 // 相对区域宽
 const defaultAreaWidth = $(window).width();
@@ -17,11 +17,11 @@ const defaultCanvasWidth = 750;
 export const getLocation = (width, height, x, y, areaWidth = defaultAreaWidth, canvasWidth = defaultCanvasWidth) => {
   const scale = areaWidth / canvasWidth;
   return {
-    width : width * scale,
-    height : height * scale,
-    x : x * scale,
-    y : y * scale
-  }
+    width: width * scale,
+    height: height * scale,
+    x: x * scale,
+    y: y * scale,
+  };
 };
 
 /**
@@ -33,5 +33,5 @@ export const getLocation = (width, height, x, y, areaWidth = defaultAreaWidth, c
  */
 export const getPosition = (position, areaWidth = defaultAreaWidth, canvasWidth = defaultCanvasWidth) => {
   const scale = areaWidth / canvasWidth;
-  return position * scale
+  return position * scale;
 };

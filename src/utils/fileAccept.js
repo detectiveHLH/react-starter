@@ -4,10 +4,10 @@ export const getFileAccepts = suffixes => {
   let accepts = [];
 
   for (var key in suffixes) {
-    accepts.push(getFileAccept(suffixes[key]))
+    accepts.push(getFileAccept(suffixes[key]));
   }
 
-  return accepts
+  return accepts;
 };
 
 /**
@@ -15,7 +15,7 @@ export const getFileAccepts = suffixes => {
  * @param suffix    文件后缀
  */
 export const isImageForSuffix = suffix => {
-  return 'image/jpeg,image/gif,image/png'.indexOf(getFileAccept(suffix)) != -1
+  return 'image/jpeg,image/gif,image/png'.indexOf(getFileAccept(suffix)) != -1;
 };
 
 /**
@@ -23,7 +23,7 @@ export const isImageForSuffix = suffix => {
  * @param accept    文件类型
  */
 export const isImageForAccept = accept => {
-  return 'image/jpeg,image/gif,image/png'.indexOf(accept) != -1
+  return 'image/jpeg,image/gif,image/png'.indexOf(accept) != -1;
 };
 
 const getFileAccept = suffix => {
@@ -115,6 +115,6 @@ const getFileAccept = suffix => {
     case 'xlsx':
       return 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
     default :
-      return ''
+      return '';
   }
 };

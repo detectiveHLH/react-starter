@@ -10,22 +10,22 @@ const param = obj => {
   const paramHandle = (paramObj, keyName) => {
     let type = Object.prototype.toString.call(paramObj);
     if (type == '[object String]' || type == '[object Number]') {
-      str.push([keyName, paramObj])
+      str.push([keyName, paramObj ]);
     } else if (type == '[object Boolean]' || type == '[object Null]') {
-      str.push([keyName, paramObj || ''])
+      str.push([keyName, paramObj || '' ]);
     } else {
       for (const key in paramObj) {
         type = Object.prototype.toString.call(paramObj[key]);
         if (type == '[object Object]') {
-          paramHandle(paramObj[key], keyName ? `${keyName}[${key}]` : key)
+          paramHandle(paramObj[key], keyName ? `${keyName}[${key}]` : key);
         } else if (type == '[object Array]') {
           paramObj[key].map((v, k) => {
-            paramHandle(v, keyName ? `${keyName}[${key}][${k}]` : `${key}[${k}]`)
-          })
+            paramHandle(v, keyName ? `${keyName}[${key}][${k}]` : `${key}[${k}]`);
+          });
         } else if (type == '[object Boolean]' || type == '[object Null]') {
-          str.push([keyName ? `${keyName}[${key}]` : key, paramObj[key] || ''])
+          str.push([keyName ? `${keyName}[${key}]` : key, paramObj[key] || '' ]);
         } else {
-          str.push([keyName ? `${keyName}[${key}]` : key, paramObj[key]])
+          str.push([keyName ? `${keyName}[${key}]` : key, paramObj[key] ]);
         }
       }
     }
@@ -34,9 +34,9 @@ const param = obj => {
   paramHandle(obj);
 
   str.map(v => {
-    paramStr.push(`${encodeURIComponent(v[0])}=${encodeURIComponent(v[1])}`)
+    paramStr.push(`${encodeURIComponent(v[0])}=${encodeURIComponent(v[1])}`);
   });
-  return paramStr.join('&')
+  return paramStr.join('&');
 };
 
-export default param
+export default param;

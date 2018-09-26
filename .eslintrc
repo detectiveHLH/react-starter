@@ -1,37 +1,76 @@
 {
-    "parser": "babel-eslint",
-    "extends": [
-        "standard",
-        "standard-react"
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "react-app"
+  ],
+  "rules": {
+    "strict": "error",
+    //"indent": ["error", 4, { "SwitchCase": 1 }],
+    "eqeqeq": "error",
+    "no-lone-blocks": "error",
+    "no-lonely-if": "error",
+    "no-multi-spaces": "error",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2
+      }
     ],
-    "plugins": [
-        "babel",
-        "react",
-        "promise"
+    "no-param-reassign": "error",
+    "no-spaced-func": "error",
+    "no-use-before-define": "error",
+    "no-unused-vars": "error",
+    "no-with": "error",
+    "default-case": "error",
+    "key-spacing": [
+      "error",
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
     ],
-    "env": {
-        "browser": true
-    },
-    "globals": {
-        "__DEV__": false,
-        "__TEST__": false,
-        "__PROD__": false,
-        "__COVERAGE__": false
-    },
-    "rules": {
-        "key-spacing": 0,
-        "jsx-quotes": [
-            2,
-            "prefer-single"
-        ],
-        "max-len": [
-            2,
-            120,
-            2
-        ],
-        "object-curly-spacing": [
-            2,
-            "always"
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "generator-star-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": false
+      }
+    ],
+    "semi": [
+      "error",
+      "always",
+      {
+        "omitLastInOneLineBlock": true
+      }
+    ],
+    "no-restricted-globals": "off",
+    "array-callback-return": "off",
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "info",
+          "warn",
+          "error",
+          "time",
+          "timeEnd"
         ]
-    }
+      }
+    ],
+    "react/react-in-jsx-scope": "warn",
+    "space-before-function-paren": ["error", "always"],
+    "comma-dangle": [2, "always-multiline"]
+  }
 }

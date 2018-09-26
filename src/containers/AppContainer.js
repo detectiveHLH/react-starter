@@ -1,25 +1,25 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { browserHistory, Router } from 'react-router'
-import { Provider } from 'react-redux'
-import fastClick from 'fastclick'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { browserHistory, Router } from 'react-router';
+import { Provider } from 'react-redux';
+import fastClick from 'fastclick';
 
 class AppContainer extends Component {
   static propTypes = {
     routes: PropTypes.array.isRequired,
-    store: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired,
   };
 
   componentDidMount () {
-    fastClick.attach(document.body)
+    fastClick.attach(document.body);
   }
 
   shouldComponentUpdate () {
-    return false
+    return false;
   }
 
   render () {
-    const { routes, store } = this.props
+    const { routes, store } = this.props;
 
     return (
       <Provider store={store}>
@@ -27,8 +27,8 @@ class AppContainer extends Component {
           <Router history={browserHistory} children={routes} />
         </div>
       </Provider>
-    )
+    );
   }
 }
 
-export default AppContainer
+export default AppContainer;

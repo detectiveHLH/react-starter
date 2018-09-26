@@ -1,77 +1,77 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import Icon from 'components/Icon'
-import { Spin } from 'antd'
-import $ from 'jquery'
-import './style.scss'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import Icon from 'components/Icon';
+import { Spin } from 'antd';
+import $ from 'jquery';
+import './style.scss';
 
 class Button extends Component {
   constructor (props) {
-    super(props)
+    super(props);
 
         // this.state = {...props};
 
         // 执行时间戳
-    this.actionTime = null
+    this.actionTime = null;
         // 是否点击
-    this.isClick = false
+    this.isClick = false;
   }
 
   static propTypes =
   {
         // 按钮名
-    name            :   React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
+    name: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array ]),
         // 按钮名样式
-    nameStyle       :   React.PropTypes.object,
+    nameStyle: React.PropTypes.object,
         // 点击事件
-    action          :   React.PropTypes.func,
+    action: React.PropTypes.func,
         // 图标
-    icon            :   React.PropTypes.element,
+    icon: React.PropTypes.element,
         // 图标样式
-    iconStyle       :   React.PropTypes.object,
+    iconStyle: React.PropTypes.object,
         // 是否显示侧边框
-    isSideBorder    :   React.PropTypes.bool,
+    isSideBorder: React.PropTypes.bool,
         // 侧边框大小
-    sideBorderSize  :   React.PropTypes.oneOf(['full', 'half']),
+    sideBorderSize: React.PropTypes.oneOf(['full', 'half' ]),
         // 图标与按钮名是否一行
-    isLine          :   React.PropTypes.bool,
+    isLine: React.PropTypes.bool,
         // 类型
-    type            :   React.PropTypes.oneOf(['normal', 'weaken', 'white', 'null', 'think']),
+    type: React.PropTypes.oneOf(['normal', 'weaken', 'white', 'null', 'think' ]),
         // 是否loading    (支持reducer写入: {reducer, isLoading})
-    isLoading       :   React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.object])
+    isLoading: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.object ]),
   }
 
   static defaultProps =
   {
         // 点击事件
-    action          :   () => {},
+    action: () => {},
         // 类型
-    type            :   'normal',
+    type: 'normal',
         // 是否显示侧边框
-    isSideBorder    :   false,
+    isSideBorder: false,
         // 侧边框大小
-    sideBorderSize  :   'full',
+    sideBorderSize: 'full',
         // 图标与按钮名是否一行
-    isLine          :   true,
+    isLine: true,
         // 是否loading
-    isLoading       :   false
+    isLoading: false,
   }
 
   onDown = e => {
-    e.preventDefault()
-    this.isClick = true
+    e.preventDefault();
+    this.isClick = true;
   }
 
   onUp = e => {
-    const thisTime = new Date().getTime()
+    const thisTime = new Date().getTime();
     if (!this.actionTime || thisTime - this.actionTime > 50) {
-      this.actionTime = thisTime
+      this.actionTime = thisTime;
 
       if (this.isClick) {
         setTimeout(() => {
-          this.props.action()
+          this.props.action();
                     // this.actionSet(this.props.action(this.actionSet));
-        }, 10)
+        }, 10);
       }
     }
   }
@@ -84,21 +84,21 @@ class Button extends Component {
     // }
 
   render () {
-    let className = 'component-Button'
-    let componentClassName = className
+    let className = 'component-Button';
+    let componentClassName = className;
     if (this.props.className) {
-      componentClassName += ` ${this.props.className}`
+      componentClassName += ` ${this.props.className}`;
     }
     if (this.props.type) {
-      componentClassName += ` ${className}-${this.props.type}`
+      componentClassName += ` ${className}-${this.props.type}`;
     }
     if (this.props.isSideBorder) {
-      componentClassName += ` ${className}-sideBorder ${className}-${this.props.sideBorderSize}`
+      componentClassName += ` ${className}-sideBorder ${className}-${this.props.sideBorderSize}`;
     }
 
-    let isLoading = this.props.isLoading
+    let isLoading = this.props.isLoading;
     if ($.type(isLoading) == 'object') {
-      isLoading = this.props.reducers[isLoading.reducer][isLoading.isLoading] || false
+      isLoading = this.props.reducers[isLoading.reducer][isLoading.isLoading] || false;
     }
 
     return (
@@ -131,16 +131,16 @@ class Button extends Component {
           </div>
         </Spin>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  reducers : { ...state }
-})
+  reducers: { ...state },
+});
 
 const mapDispatchToProps = {
 
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Button)
+export default connect(mapStateToProps, mapDispatchToProps)(Button);

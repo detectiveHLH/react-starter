@@ -1,9 +1,9 @@
 const getSrc = url => {
   if (url.indexOf('http') == 0) {
-    return url
+    return url;
   } else {
-    return require(`assets/image/${url}`)
+    return require(`assets/image/${url}`);
   }
 };
 
-export default getSrc
+export default getSrc;

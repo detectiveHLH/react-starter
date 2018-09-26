@@ -7,10 +7,10 @@
  */
 export const addStr = (str, val, isRepeat = false) => {
   if (!isRepeat && selectForValStr(str, val)[0]) {
-    return [str, false]
+    return [str, false ];
   }
 
-  return [str ? `${str},${val}` : val, true]
+  return [str ? `${str},${val}` : val, true ];
 };
 
 /**
@@ -21,20 +21,20 @@ export const addStr = (str, val, isRepeat = false) => {
  */
 export const selectForValStr = (str, val) => {
   if (!str) {
-    return [false]
+    return [false ];
   }
 
-  let result = [false];
+  let result = [false ];
 
   str = (str + '').split(',');
   str.map((v, k) => {
     if (v == val) {
-      result = [true, k];
-      return false
+      result = [true, k ];
+      return false;
     }
   });
 
-  return result
+  return result;
 };
 
 /**
@@ -46,7 +46,7 @@ export const selectForValStr = (str, val) => {
  */
 export const deleteStr = (str, val, isAll = true) => {
   if (!str) {
-    return [str, 0]
+    return [str, 0 ];
   }
 
   let num = 0;
@@ -55,13 +55,13 @@ export const deleteStr = (str, val, isAll = true) => {
 
   str.map((v, k) => {
     if (v == val && (isAll || num == 0)) {
-      num++
+      num++;
     } else {
-      newStr = newStr == null ? v : `${newStr},${v}`
+      newStr = newStr == null ? v : `${newStr},${v}`;
     }
   });
 
-  return [newStr, num]
+  return [newStr, num ];
 };
 
 /**
@@ -74,7 +74,7 @@ export const deleteStr = (str, val, isAll = true) => {
  */
 export const deleteArray = (array, key, val, isAll = true) => {
   if (!array || array.length == 0) {
-    return [array, 0]
+    return [array, 0 ];
   }
 
   let num = 0;
@@ -82,11 +82,11 @@ export const deleteArray = (array, key, val, isAll = true) => {
 
   array.map((v, k) => {
     if (v[key] == val && (isAll || num == 0)) {
-      num++
+      num++;
     } else {
-      newArray.push(v)
+      newArray.push(v);
     }
   });
 
-  return [newArray, num]
+  return [newArray, num ];
 };

@@ -1,12 +1,12 @@
-import fetch from 'isomorphic-fetch'
-import param from '../utils/param'
-import keyMirror from 'keymirror'
+import fetch from 'isomorphic-fetch';
+import param from '../utils/param';
+import keyMirror from 'keymirror';
 
 export const CALL_API = Symbol('CALL_API');
 // 返回reducer的action请求类型
 export const ACTION_TYPES = keyMirror({
     // 服务器错误
-  FETCH_SERVER_ERROR : null
+  FETCH_SERVER_ERROR: null,
 });
 
 /**
@@ -20,35 +20,35 @@ export const ACTION_TYPES = keyMirror({
 class PromiseSimulator {
   constructor (promise) {
     if (!promise) throw new Error(`Promise instance required.`);
-    this.promise = promise
+    this.promise = promise;
   }
 
   loop (e) {
-    this.catchedError = e
+    this.catchedError = e;
   }
 
   then (then, catchFn) {
     if (!catchFn) {
-      catchFn = (e) => this.loop(e)
+      catchFn = (e) => this.loop(e);
     }
 
     this.promise.then(then, catchFn);
-    return this
+    return this;
   }
 
   catch (catchFn) {
     this.promise.catch(catchFn);
-    return this
+    return this;
   }
 }
 
 const checkStatus = async (response) => {
   if (response.status >= 200 && response.status < 300) {
-    return response
+    return response;
   } else {
     let error = new Error(response.statusText);
     error.response = response;
-    throw error
+    throw error;
   }
 };
 
@@ -59,27 +59,27 @@ const remote = (options) => {
 
   fetchOptions.headers =
   {
-    'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'
+    'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
   };
   fetchOptions.credentials = 'include';
   const params =
     {
       ...options.data,
-      ...options.urlParam
+      ...options.urlParam,
     };
 
   let concatStr = '?',
     queryStr = param(params);
 
   if (options.url.indexOf(concatStr) > -1) {
-    concatStr = '&'
+    concatStr = '&';
   }
 
   if (queryStr) {
     if (method === 'GET' || method === 'DELETE') {
-      options.url += (concatStr + queryStr)
+      options.url += (concatStr + queryStr);
     } else {
-      fetchOptions.body = queryStr
+      fetchOptions.body = queryStr;
     }
   }
 
@@ -89,22 +89,22 @@ const remote = (options) => {
         .then(checkStatus)
         .then(res => res.json())
         .then(json => {
-          return json || {}
+          return json || {};
         })
         .catch(
             e => {
               if (e && e.response && e.response.status === 403) {
                     // window.location.hash = '/forbidden';
-                console.log(e)
+                console.log(e);
               } else {
                     // !options.hideError && Toast.fail(e.message, 2);
-                console.log(e)
+                console.log(e);
               }
-              return Promise.reject(e)
+              return Promise.reject(e);
             }
         );
 
-  return new PromiseSimulator(t)
+  return new PromiseSimulator(t);
 };
 
 export default store => next => action => {
@@ -112,7 +112,7 @@ export default store => next => action => {
 
     // 按照普通的 Action 处理
   if (typeof callAPI === 'undefined') {
-    return next(action)
+    return next(action);
   }
 
     // 参数
@@ -123,20 +123,20 @@ export default store => next => action => {
     let newAction =
       {
         ...action,
-        ...data
+        ...data,
       };
     delete newAction[CALL_API];
-    return newAction
+    return newAction;
   };
 
     // 返回reducer的action类型:[请求, 成功, 失败]
-  let [requestType, successType, failType] = [`REQUEST_${type}`, type, `FAIL_${type}`];
+  let [requestType, successType, failType ] = [`REQUEST_${type}`, type, `FAIL_${type}` ];
 
   next(createNewAction({
-    type : requestType,
+    type: requestType,
     args,
-    request : data,
-    urlParam
+    request: data,
+    urlParam,
   }));
 
   return remote({
@@ -144,7 +144,7 @@ export default store => next => action => {
     data,
     urlParam,
     hideError,
-    method
+    method,
   }).then(
         // 当前返回格式形如:
         // {
@@ -168,26 +168,26 @@ export default store => next => action => {
             case 0:
               success && success(r.data, r.status);
               next(createNewAction({
-                type : successType,
-                data : r.data,
-                status : r.status,
+                type: successType,
+                data: r.data,
+                status: r.status,
                 args,
                 urlParam,
-                request : data
+                request: data,
               }));
               break;
                 // 失败
             default:
               fail && fail(r.status, r.data);
               next(createNewAction({
-                type : failType,
-                data : r.data,
-                status : r.status,
+                type: failType,
+                data: r.data,
+                status: r.status,
                 args,
                 urlParam,
-                request : data
+                request: data,
               }));
-              break
+              break;
           }
         }
     ).catch(
@@ -195,10 +195,10 @@ export default store => next => action => {
             // alert(e)
             // console.log(e)
           next(createNewAction({
-            type : ACTION_TYPES.FETCH_SERVER_ERROR,
-            error : e,
-            request : data
-          }))
+            type: ACTION_TYPES.FETCH_SERVER_ERROR,
+            error: e,
+            request: data,
+          }));
         }
-    )
-}
+    );
+};

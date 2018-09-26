@@ -1,4 +1,4 @@
-import { ACTION_TYPES } from './action'
+import { ACTION_TYPES } from './action';
 
 const initialState = {
 
@@ -10,5 +10,5 @@ export default (state = initialState, action) => {
 
   }
 
-  return { ...newState }
-}
+  return { ...newState };
+};

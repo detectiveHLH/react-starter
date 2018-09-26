@@ -1,82 +1,82 @@
-import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
-import Avatar from 'components/Avatar'
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+import Avatar from 'components/Avatar';
 
-import './style.scss'
+import './style.scss';
 
 class User extends Component {
   constructor (props) {
-    super(props)
+    super(props);
 
     this.state = {
 
-    }
+    };
   }
 
   static propTypes =
   {
         // 头像url
-    userAvatar          :   PropTypes.string,
+    userAvatar: PropTypes.string,
         // ID
-    userId              :   PropTypes.string,
+    userId: PropTypes.string,
         // 名字
-    userName            :   PropTypes.string,
+    userName: PropTypes.string,
         // 大小
-    size                :   PropTypes.oneOf(['sm', 'x-sm']),
+    size: PropTypes.oneOf(['sm', 'x-sm' ]),
         // 是否查看钉钉个人资料(当userId不为空且在有钉钉对象时有效,此时将忽略link)
-    isSeeDdProfile      :   PropTypes.bool,
+    isSeeDdProfile: PropTypes.bool,
         // 钉钉应用ID
-    ddCorpId            :   PropTypes.string,
+    ddCorpId: PropTypes.string,
         // 钉钉对象
-    dd                  :   PropTypes.object,
+    dd: PropTypes.object,
         // 链接 (完整链接为该链接+ID)
-    link                :   PropTypes.string,
+    link: PropTypes.string,
         // 是否拼接尺寸 (钉钉需要)
-    isAddSize           :   PropTypes.bool
+    isAddSize: PropTypes.bool,
   }
 
   static defaultProps =
   {
         // 大小
-    size                :   'sm',
+    size: 'sm',
         // 是否查看钉钉个人资料(当userId不为空且在有钉钉对象时有效,此时将忽略link)
-    isSeeDdProfile      :   true,
+    isSeeDdProfile: true,
         // 钉钉对象
-    dd                  :   null,
+    dd: null,
         // 链接 (完整链接为该链接+ID)
-    link                :   '/user/home/',
+    link: '/user/home/',
         // 是否拼接尺寸 (钉钉需要)
-    isAddSize           :   true
+    isAddSize: true,
   }
 
   render () {
-    let className = 'component-User'
-    let componentClassName = `${className} ${className}-${this.props.size}`
+    let className = 'component-User';
+    let componentClassName = `${className} ${className}-${this.props.size}`;
     if (this.props.className) {
-      componentClassName += ` ${this.props.className}`
+      componentClassName += ` ${this.props.className}`;
     }
 
-    let userName = this.props.userName || this.props.children
+    let userName = this.props.userName || this.props.children;
     if (this.props.userId) {
       if (!this.props.isSeeDdProfile || !this.props.dd || !this.props.ddCorpId) {
         userName =
-          <Link className={`${className}-link`} to={this.props.link + this.props.userId}>{userName}</Link>
+          <Link className={`${className}-link`} to={this.props.link + this.props.userId}>{userName}</Link>;
       } else {
         userName =
           <span
             onClick={() => {
               this.props.dd.biz.util.open({
-                name : 'profile',
-                params : {
-                  id : this.props.userId,
-                  corpId : this.props.ddCorpId
+                name: 'profile',
+                params: {
+                  id: this.props.userId,
+                  corpId: this.props.ddCorpId,
                 },
-                onFail : err => {}
-              })
+                onFail: err => {},
+              });
             }}
                     >
             {userName}
-          </span>
+          </span>;
       }
     }
 
@@ -94,8 +94,8 @@ class User extends Component {
                 />
         {userName}
       </span>
-    )
+    );
   }
 }
 
-export default User
+export default User;

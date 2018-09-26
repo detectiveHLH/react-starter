@@ -26,9 +26,9 @@ const browserAttr = {
       // 是否微信
       weixin: navigator.userAgent.indexOf('MicroMessenger') > -1,
       // 是否QQ
-      qq: navigator.userAgent.match(/\sQQ/i) == ' qq'
+      qq: navigator.userAgent.match(/\sQQ/i) == ' qq',
     },
-  language: (navigator.browserLanguage || navigator.language).toLowerCase()
+  language: (navigator.browserLanguage || navigator.language).toLowerCase(),
 };
 
-export default browserAttr
+export default browserAttr;

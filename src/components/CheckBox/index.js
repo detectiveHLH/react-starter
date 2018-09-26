@@ -1,36 +1,36 @@
-import React, { Component, PropTypes } from 'react'
-import Icon from 'components/Icon'
-import $ from 'jquery'
+import React, { Component, PropTypes } from 'react';
+import Icon from 'components/Icon';
+import $ from 'jquery';
 
-import './style.scss'
+import './style.scss';
 
 class CheckBox extends Component {
   constructor (props) {
-    super(props)
+    super(props);
 
     this.state = {
-      isChecked : false
-    }
+      isChecked: false,
+    };
 
-    this.id = new Date().getTime() + Math.random()
+    this.id = new Date().getTime() + Math.random();
   }
 
   static propTypes = {
         // 指定当前是否选中
-    checked             :   React.PropTypes.bool,
+    checked: React.PropTypes.bool,
         // 初始是否选中
-    defaultChecked      :   React.PropTypes.bool,
+    defaultChecked: React.PropTypes.bool,
         // 变化时回调函数
-    onChange            :   React.PropTypes.func
+    onChange: React.PropTypes.func,
   }
 
   static defaultTypes = {
         // 指定当前是否选中
-    checked             :   false,
+    checked: false,
         // 初始是否选中
-    defaultChecked      :   false,
+    defaultChecked: false,
         // 变化时回调函数
-    onChange            :   () => {}
+    onChange: () => {},
   }
 
   componentWillMount () {
@@ -39,36 +39,36 @@ class CheckBox extends Component {
 
   componentDidMount () {
     if (this.props.defaultChecked || this.props.checked) {
-      this.change(true)
+      this.change(true);
     } else {
-      this.change(false)
+      this.change(false);
     }
   }
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.checked == true) {
-      this.change(true)
+      this.change(true);
     } else {
-      this.change(false)
+      this.change(false);
     }
   }
 
   change = type => {
-    let status = null
-    type ? status = true : status = false
-    $(this.checkbox).attr('checked', status)
+    let status = null;
+    type ? status = true : status = false;
+    $(this.checkbox).attr('checked', status);
   }
 
   render () {
-    let className = `component-CheckBox`
-    let componentClassName = `${className}`
+    let className = `component-CheckBox`;
+    let componentClassName = `${className}`;
     if (this.props.className) {
-      componentClassName += ` ${this.props.className}`
+      componentClassName += ` ${this.props.className}`;
     }
 
     return (
       <div className={componentClassName} onClick={() => {
-        this.props.action(this.props.children)
+        this.props.action(this.props.children);
       }}>
         <div className={`${className}-content`}>
           <input type='checkbox'
@@ -82,8 +82,8 @@ class CheckBox extends Component {
           {this.props.children}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default CheckBox
+export default CheckBox;

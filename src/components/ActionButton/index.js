@@ -1,37 +1,37 @@
-import React, { Component, PropTypes } from 'react'
-import Icon from 'components/Icon'
-import { Spin } from 'antd'
-import './style.scss'
+import React, { Component, PropTypes } from 'react';
+import Icon from 'components/Icon';
+import { Spin } from 'antd';
+import './style.scss';
 
 class ActionButton extends Component {
   static propTypes =
   {
         // 按钮名
-    name        : React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
         // 点击事件
-    action      : React.PropTypes.func.isRequired,
+    action: React.PropTypes.func.isRequired,
         // 图标
-    icon        : React.PropTypes.element,
+    icon: React.PropTypes.element,
         // 类型
-    type        : React.PropTypes.oneOf(['primary', 'warning', 'danger']),
+    type: React.PropTypes.oneOf(['primary', 'warning', 'danger' ]),
         // 是否loading
-    isLoading   : React.PropTypes.bool
+    isLoading: React.PropTypes.bool,
   };
 
   static defaultProps =
   {
         // 图标
-    icon        : <Icon type='cloud-upload' />,
+    icon: <Icon type='cloud-upload' />,
         // 类型
-    type        : 'primary',
+    type: 'primary',
         // 是否loading
-    isLoading   : false
+    isLoading: false,
   };
 
   render () {
     let className = `component-ActionButton`;
     if (this.props.className) {
-      className += ` ${this.props.className}`
+      className += ` ${this.props.className}`;
     }
 
     return (
@@ -47,8 +47,8 @@ class ActionButton extends Component {
           </div>
         </Spin>
       </div>
-    )
+    );
   }
 }
 
-export default ActionButton
+export default ActionButton;

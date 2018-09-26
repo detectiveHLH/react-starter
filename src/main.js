@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import createStore from './store/createStore'
-import AppContainer from './containers/AppContainer'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import createStore from './store/createStore';
+import AppContainer from './containers/AppContainer';
 
 // ========================================================
 // Store Instantiation
@@ -20,7 +20,7 @@ let render = () => {
   ReactDOM.render(
     <AppContainer store={store} routes={routes} />,
         MOUNT_NODE
-    )
+    );
 };
 
 // This code is excluded from production bundle
@@ -31,16 +31,16 @@ if (__DEV__) {
     const renderError = (error) => {
       const RedBox = require('redbox-react').default;
 
-      ReactDOM.render(<RedBox error={error} />, MOUNT_NODE)
+      ReactDOM.render(<RedBox error={error} />, MOUNT_NODE);
     };
 
         // Wrap render in try/catch
     render = () => {
       try {
-        renderApp()
+        renderApp();
       } catch (error) {
         console.error(error);
-        renderError(error)
+        renderError(error);
       }
     };
 
@@ -48,9 +48,9 @@ if (__DEV__) {
     module.hot.accept('./routes/index', () =>
             setImmediate(() => {
               ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-              render()
+              render();
             })
-        )
+        );
   }
 }
 
