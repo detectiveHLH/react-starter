@@ -1,80 +1,79 @@
-import React, {Component, PropTypes} from 'react';
-import Button from 'components/Button';
-import CheckBox from 'components/CheckBox';
-import $ from 'jquery';
+import React, { Component, PropTypes } from 'react'
+import Button from 'components/Button'
+import CheckBox from 'components/CheckBox'
+import $ from 'jquery'
 
-import './style.scss';
+import './style.scss'
 
 class CheckBoxGroup extends Component {
-    constructor(props){
-        super(props);
+  constructor (props) {
+    super(props)
 
-        this.state = {
-            checkList : []
-        };
+    this.state = {
+      checkList : []
     }
+  }
 
-    static propTypes = {
+  static propTypes = {
         // 默认选中的选项
-        defaultValue            :   React.PropTypes.array,
+    defaultValue            :   React.PropTypes.array,
         // 指定选中的选项
-        value                   :   React.PropTypes.array,
+    value                   :   React.PropTypes.array,
         // 变化时回调函数
-        onChange                :   React.PropTypes.func,
+    onChange                :   React.PropTypes.func,
         // 选项
-        option                  :   React.PropTypes.array,
+    option                  :   React.PropTypes.array,
         // 点击事件的回调函数
-        action                  :   React.PropTypes.func
-    }
+    action                  :   React.PropTypes.func
+  }
 
-    static defaultTypes = {
+  static defaultTypes = {
         // 默认选中的选项
-        defaultValue            :   [],
+    defaultValue            :   [],
         // 指定选中的选项
-        value                   :   [],
+    value                   :   [],
         // 变化时回调函数
-        onChange                :   () => {},
+    onChange                :   () => {},
         // 选项
-        option                  :   [],
+    option                  :   [],
         // 点击事件的回调函数
-        action                  :   () => {}
+    action                  :   () => {}
+  }
+
+  componentWillReceiveProps (nextProps) {
+
+  }
+
+  render () {
+    let className = `component-CheckBoxGroup`
+    let componentClassName = `${className}`
+    if (this.props.className) {
+      componentClassName += ` ${this.props.className}`
     }
 
-    componentWillReceiveProps(nextProps) {
-
-    }
-
-    render() {
-        let className = `component-CheckBoxGroup`;
-        let componentClassName = `${className}`;
-        if(this.props.className) {
-            componentClassName += ` ${this.props.className}`;
-        }
-
-
-        let checkbox = null,
-            checkboxList = [];
-        this.props.option.map((v, k) => {
-            checkbox =
-                <CheckBox
-                    key={k}
-                    id={k}
-                    checked={this.state.checkList[k]}
-                    onChange={this.props.onChange}
-                    action={this.props.action}
+    let checkbox = null,
+      checkboxList = []
+    this.props.option.map((v, k) => {
+      checkbox =
+        <CheckBox
+          key={k}
+          id={k}
+          checked={this.state.checkList[k]}
+          onChange={this.props.onChange}
+          action={this.props.action}
                 >
-                    {v}
-                </CheckBox>
-            checkboxList.push(checkbox)
-        })
+          {v}
+        </CheckBox>
+      checkboxList.push(checkbox)
+    })
 
-        return(
-            <div className={componentClassName}>
-                {/*<Button name={'全选'}  style={{}} type={'weaken'}*/}
-                {checkboxList}
-            </div>
-        )
-    }
+    return (
+      <div className={componentClassName}>
+        {/* <Button name={'全选'}  style={{}} type={'weaken'} */}
+        {checkboxList}
+      </div>
+    )
+  }
 }
 
-export default CheckBoxGroup;
+export default CheckBoxGroup

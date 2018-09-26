@@ -1,10 +1,10 @@
-import configLocal from 'config/local';
+import configLocal from 'config/local'
 
 let server = null;
 if (process.env.NODE_ENV !== 'development') {
-    server = 'http://app.tap4fun.com';
+  server = 'http://app.tap4fun.com'
 } else {
-    server = configLocal.SERVER;
+  server = configLocal.SERVER
 }
 
 export const SERVER = server;

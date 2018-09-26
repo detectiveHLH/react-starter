@@ -1,15 +1,14 @@
-import {ACTION_TYPES} from './action';
+import { ACTION_TYPES } from './action'
 
 const initialState = {
 
-}
+};
 
 export default (state = initialState, action) => {
-    let newState = state;
-    switch(action.type)
-    {
+  let newState = state;
+  switch (action.type) {
 
-    }
+  }
 
-    return {...newState};
+  return { ...newState }
 }

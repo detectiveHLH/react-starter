@@ -1,46 +1,45 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {} from './action';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {} from './action'
 
-import './style.scss';
+import './style.scss'
 class App extends Component {
-    constructor(props) {
-        super(props);
+  constructor (props) {
+    super(props);
 
-        this.state={}
-    }
+    this.state = {}
+  }
 
-    static propTypes =
-    {
-        
-    }
+  static propTypes =
+  {
 
-    render() {
-        let className = 'layoutApp';
+  };
 
-        return(
-             <div className={className}>
-                 {/*header*/}
+  render () {
+    let className = 'layoutApp';
 
+    return (
+      <div className={className}>
+        {/* header */}
 
-                 {/*body*/}
-                 <div className={`${className}-body`}>
-                     {this.props.children}
-                 </div>
+        {/* body */}
+        <div className={`${className}-body`}>
+          {this.props.children}
+        </div>
 
-                 {/*footer*/}
+        {/* footer */}
 
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = state => ({
-    reducer : state.layoutApp
-})
+  reducer : state.layoutApp
+});
 
 const mapDispatchToProps = {
 
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)
