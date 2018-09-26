@@ -1,7 +1,7 @@
 <h1 align="center">React Starter</h1>
 A starter that integrates react, redux and react-router
 
-# Features
+## Features
 . Import Antd Design dependencies.
 
 . Add Eslint to make your code specification.
@@ -11,7 +11,7 @@ A starter that integrates react, redux and react-router
 . Add react-router.
 
 
-# Usage
+## Usage
 . Clone this project to your local repository.
 ```bash
 git clone git@github.com:detectiveHLH/koa2-response.git
@@ -25,6 +25,6 @@ npm install
 npm start
 ```
 
-# License
+## License
 [MIT](./LICENSE)
 
