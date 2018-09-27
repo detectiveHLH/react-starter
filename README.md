@@ -2,25 +2,22 @@
 A starter that integrates react, redux and react-router
 
 ## Features
-. Import Antd Design dependencies.
-
-. Add Eslint to make your code specification.
-
-. Add Redux dependeces.
-
-. Add react-router.
+- Import Antd Design dependencies.
+- Add Eslint to make your code specification.
+- Add Redux dependeces.
+- Add react-router.
 
 
 ## Usage
-. Clone this project to your local repository.
+- Clone this project to your local repository.
 ```bash
 git clone git@github.com:detectiveHLH/koa2-response.git
 ```
-. Install the dependences.
+- Install the dependences.
 ```bash
 npm install
 ```
-. Start server
+- Start server
 ```bash
 npm start
 ```
