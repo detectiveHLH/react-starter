@@ -11,7 +11,7 @@ A starter that integrates react, redux and react-router
 ## Usage
 - Clone this project to your local repository.
 ```bash
-git clone git@github.com:detectiveHLH/koa2-response.git
+git clone https://github.com/detectiveHLH/react-starter.git
 ```
 - Install the dependences.
 ```bash
